@@ -1,10 +1,11 @@
 package com.example.demo;
 
 import java.util.Scanner;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.entitymodel.Person;
 import com.example.demo.repo.PersonRepo;
 
@@ -15,10 +16,9 @@ public class Runner implements CommandLineRunner {
   PersonRepo personRepo;
   
   @Override
-  @Transactional
+  @Transactional(isolation=Isolation.DEFAULT)
   public void run(String... args) throws Exception {
 
-    String userName;
     Scanner myObj = new Scanner(System.in);  
     System.err.println("hello");
     
@@ -53,7 +53,7 @@ public class Runner implements CommandLineRunner {
     personRepo.save(p4);
     
     System.err.println("trigger v2 elon.. just press enter");
-    userName = myObj.nextLine();  
+    myObj.nextLine();  
     System.err.println("v2 ing elon..");  
     
     p4.setFirstName("EElon");
@@ -70,6 +70,7 @@ public class Runner implements CommandLineRunner {
     System.err.println("exit runner.. i.e commit transation.. ..press enter");    
     myObj.nextLine();  
     System.err.println("getting the trasaction commited.");  
+    myObj.close();
   }
 
 }
