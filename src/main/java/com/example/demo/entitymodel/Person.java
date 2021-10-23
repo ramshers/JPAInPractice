@@ -9,59 +9,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity  
-@Table(name = "billionaires")
+@Entity
+@Table(name = "person")
+@Getter
+@Setter
 public class Person {
-  
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
-  
-  @Column(name="fist_name")
+
+  @Column(name = "fist_name")
   String firstName;
-  
-  @Column(name="last_name")
+
+  @Column(name = "last_name")
   String lastName;
-  
+
+  @Column(name = "career")
   String career;
 
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public String getCareer() {
-    return career;
-  }
-
-  public void setCareer(String career) {
-    this.career = career;
-  }
-
-  @Override
-  public String toString() {
-    return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", career="
-        + career + "]";
-  }
+  
 
 }
+
+

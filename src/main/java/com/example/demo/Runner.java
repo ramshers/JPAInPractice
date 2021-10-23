@@ -18,36 +18,58 @@ public class Runner implements CommandLineRunner {
   @Transactional
   public void run(String... args) throws Exception {
 
-    System.out.println("hello");
+    String userName;
+    Scanner myObj = new Scanner(System.in);  
+    System.err.println("hello");
     
     //Person p = personRepo.getById(new Long(11));
     
-    //System.err.println(p);
-    
     Person p1 = new Person();
-    p1.setFirstName("Jeff");
-    p1.setLastName("Bezos");
-    p1.setCareer("Tech Entrepreneur");
+    p1.setFirstName("Dennis");
+    p1.setLastName("Ritchie");
+    p1.setCareer("co-author C Language");
     System.err.println(p1);
     personRepo.save(p1);
     
-    System.err.println("before flush");
-    personRepo.flush();
-    System.err.println("after flush");
-
     Person p2 = new Person();
-    p2.setFirstName("AMZN Jeff");
-    p2.setLastName("Bezos");
-    p2.setCareer("Tech and eCom Entrepreneur");
+    p2.setFirstName("Roy");
+    p2.setLastName("Fielding");
+    p2.setCareer("Computer Scientist");
     System.err.println(p2);
     personRepo.save(p2);
     
-    Scanner myObj = new Scanner(System.in);  
-    System.err.println("Enter username");
-
-    String userName = myObj.nextLine();  
-    System.err.println("Username is: " + userName); 
-
+    Person p3 = new Person();
+    p3.setFirstName("Guido");
+    p3.setLastName("Van Rossum,");
+    p3.setCareer("Creator of Python");
+    System.err.println(p3);
+    personRepo.save(p3);
+    
+    Person p4 = new Person();
+    p4.setFirstName("Elon");
+    p4.setLastName("Musk");
+    p4.setCareer("Auto and Space Entrepreneur");
+    System.err.println(p4);
+    personRepo.save(p4);
+    
+    System.err.println("trigger v2 elon.. just press enter");
+    userName = myObj.nextLine();  
+    System.err.println("v2 ing elon..");  
+    
+    p4.setFirstName("EElon");
+    p4.setLastName("Mussk");
+    p4.setCareer("Auto and Space Entrepreneur + NeuralLink + OpenAI");
+    System.err.println(p4);
+    personRepo.save(p4);
+    
+    System.err.println("trigger flush..press enter");
+    myObj.nextLine();  
+    personRepo.flush();
+    System.err.println("flushed.");  
+    
+    System.err.println("exit runner.. i.e commit transation.. ..press enter");    
+    myObj.nextLine();  
+    System.err.println("getting the trasaction commited.");  
   }
 
 }
