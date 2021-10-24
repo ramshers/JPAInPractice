@@ -1,8 +1,10 @@
 package com.example.demo;
 
+import java.util.List;
 import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,14 +17,26 @@ public class Runner implements CommandLineRunner {
   @Autowired
   PersonRepo personRepo;
   
+  @Lazy
+  @Autowired
+  Runner self;
+  
+  @Autowired
+  PersonService personService;
+  
   @Override
   public void run(String... args) throws Exception { 
     
-    myrun();
+    self.populatePersons();
+    
+    List<Person> persons = personService.getPersonsByFirstName("Elon");
+    
+    System.err.println(persons);
+    
   }
 
   @Transactional(isolation=Isolation.DEFAULT)
-  public void myrun(String... args) throws Exception {
+  public void populatePersons(String... args) throws Exception {
 
     Scanner myObj = new Scanner(System.in);  
     System.err.println("hello");
@@ -76,6 +90,7 @@ public class Runner implements CommandLineRunner {
     myObj.nextLine();  
     System.err.println("getting the trasaction commited.");  
     myObj.close();
+    
   }
 
 }

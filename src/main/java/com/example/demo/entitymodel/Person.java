@@ -11,11 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "person")
 @Getter
 @Setter
+@ToString
 public class Person {
 
   @Id
