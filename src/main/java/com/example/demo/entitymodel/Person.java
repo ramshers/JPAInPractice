@@ -31,8 +31,6 @@ public class Person {
   @Column(name = "career")
   String career;
 
-  
-
 }
 
 

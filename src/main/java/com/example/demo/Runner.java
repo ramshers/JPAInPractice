@@ -16,7 +16,10 @@ public class Runner implements CommandLineRunner {
   PersonRepo personRepo;
   
   @Override
-  public void run(String... args) throws Exception { }
+  public void run(String... args) throws Exception { 
+    
+    myrun();
+  }
 
   @Transactional(isolation=Isolation.DEFAULT)
   public void myrun(String... args) throws Exception {
