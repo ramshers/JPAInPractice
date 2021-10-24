@@ -16,8 +16,10 @@ public class Runner implements CommandLineRunner {
   PersonRepo personRepo;
   
   @Override
+  public void run(String... args) throws Exception { }
+
   @Transactional(isolation=Isolation.DEFAULT)
-  public void run(String... args) throws Exception {
+  public void myrun(String... args) throws Exception {
 
     Scanner myObj = new Scanner(System.in);  
     System.err.println("hello");
