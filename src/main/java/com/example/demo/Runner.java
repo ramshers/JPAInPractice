@@ -28,8 +28,13 @@ public class Runner implements CommandLineRunner {
   public void run(String... args) throws Exception { 
     
     self.populatePersons();
+    System.err.println("self invoked..");
     
-    List<Person> persons = personService.getPersonsByFirstName("Elon");
+    List<Person> persons = personService.getPersonsByFirstName("EElon");
+    
+    Person p = new Person();
+    p.getFirstName();
+    p.setLastName("a");
     
     System.err.println(persons);
     
@@ -59,7 +64,7 @@ public class Runner implements CommandLineRunner {
     
     Person p3 = new Person();
     p3.setFirstName("Guido");
-    p3.setLastName("Van Rossum,");
+    p3.setLastName("Van Rossum");
     p3.setCareer("Creator of Python");
     System.err.println(p3);
     personRepo.save(p3);

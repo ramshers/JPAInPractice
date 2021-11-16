@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,6 +19,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode()
 public class Person {
 
   @Id
@@ -26,7 +28,8 @@ public class Person {
 
   @Column(name = "fist_name")
   String firstName;
-
+  
+  @Setter
   @Column(name = "last_name")
   String lastName;
 
